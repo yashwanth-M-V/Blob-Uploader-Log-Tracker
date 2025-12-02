@@ -5,7 +5,7 @@ from utils.file_utils import get_basic_file_metadata
 from datetime import datetime
 
 def main():
-    st.title("Simple Blob Uploader + Log Container")
+    st.title("Azure Blob Uploader + Log Container")
     st.text("make sure no sentive files are uploaded")
 
     uploaded_file = st.file_uploader("Upload file")
