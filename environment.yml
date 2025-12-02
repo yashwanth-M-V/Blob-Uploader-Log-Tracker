@@ -1,0 +1,11 @@
+name: blob-uploader
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - streamlit==1.51.0
+      - azure-storage-blob
+      - python-dotenv
+      - pandas
