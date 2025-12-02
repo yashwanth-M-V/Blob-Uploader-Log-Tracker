@@ -1,21 +1,23 @@
 import os
 from dotenv import load_dotenv
+import streamlit as st
 
-# Load .env file (for local development)
 load_dotenv()
 
-# --------------------------
-# Azure Blob Storage Settings
-# --------------------------
+AZURE_STORAGE_CONNECTION_STRING = (
+    st.secrets.get("AZURE_STORAGE_CONNECTION_STRING")
+    or os.getenv("AZURE_STORAGE_CONNECTION_STRING")
+)
 
-# This must come from your Storage Account → Access Keys → Connection string
-AZURE_STORAGE_CONNECTION_STRING = os.getenv("AZURE_STORAGE_CONNECTION_STRING", "")
+UPLOAD_CONTAINER = (
+    st.secrets.get("UPLOAD_CONTAINER")
+    or os.getenv("UPLOAD_CONTAINER", "uploads")
+)
 
-# Container for storing uploaded files
-UPLOAD_CONTAINER = os.getenv("UPLOAD_CONTAINER", "uploads")
+LOG_CONTAINER = (
+    st.secrets.get("LOG_CONTAINER")
+    or os.getenv("LOG_CONTAINER", "logs")
+)
 
-# Container for storing log files
-LOG_CONTAINER = os.getenv("LOG_CONTAINER", "logs")
-
-# App title (for Streamlit UI)
-APP_TITLE = "Simple Blob Uploader + Log Container"
+APP_TITLE = "Blob Uploader & Log Tracker"
+APP_DESCRIPTION = "A simple app to upload files to Azure Blob Storage and track logs."
